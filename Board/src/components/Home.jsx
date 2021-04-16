@@ -20,12 +20,15 @@ function Home(props) {
     }
 
     function updateNote(note){
-        props.setNotes(prevNotes => {
-            const noteIndex = prevNotes.findIndex((before)=>before.id===note.id);
+        // props.setNotes(prevNotes => {
+        //     const noteIndex = prevNotes.findIndex((before)=>before.id===note.id);
 
-            prevNotes[noteIndex] = note;
-            return prevNotes;
-        });
+        //     prevNotes[noteIndex] = note;
+        //     return prevNotes;
+        // });
+        props.setNotes(prevNotes=>prevNotes.map(
+            prevNote => prevNote.id === note.id ? note : prevNote
+        ));
     }
 
     return (
