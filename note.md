@@ -109,4 +109,24 @@ setMethod를 사용하지 않고 임의로 ```stateValue = value;``` 이런 식�
     //dispatch는 action type이 기술된 객체를 넘겨줘서 action을 발생시키는 함수
     ```
 
-    * useState vs useReducer -> 복잡하다 싶으면 Reducer 쓰면 되는데, 직접 둘 다 써보면서 나한테 편한거 쓰면 된다.
+* useState vs useReducer -> 복잡하다 싶으면 Reducer 쓰면 되는데, 직접 둘 다 써보면서 나한테 편한거 쓰면 된다.
+
+ * Context API : 컴포넌트간에 props를 넘겨줄 때, 중간 컴포넌트를 거치지 않고 바로 넘겨줄 수 있도록 해주는 API다. context를 다른 파일에 저장하고, 내보내고, 불러와서 어디서든 사용할 수 있는 장점이 있다.
+ ```javascript
+const MyContext = createContext('value');// value를 설정하고,
+
+function Child(){
+    const text = useContext(MyContext); // 이렇게 바로 불러올 수 있다.
+    console.log(text); // "what do you want" 출력
+}
+
+function Parent(){
+    return <Child/>
+}
+
+function ContextSample(){
+    return <MyContext.Provider value='what do you want'>
+        <Child/>
+    </MyContext.Provider>
+}
+ ```
