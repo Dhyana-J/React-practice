@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"
 import DeleteIcon from '@material-ui/icons/Delete';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -26,6 +27,9 @@ function Note(props) {
       }}>
           <button><SearchIcon/></button>
       </Link> */}
+      <Link href={`/detail/${props.id}`}>
+          <button><SearchIcon/></button>
+      </Link>
     </div>
   );
 }
