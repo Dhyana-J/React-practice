@@ -1,6 +1,12 @@
+import Head from 'next/head';
+
 const About = () => {
     return (
         <>
+            <Head>
+                <title>Fruit List | About</title>
+                <meta name="keywords" content="fruits" />
+            </Head>
             <h1>About</h1>
             <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
