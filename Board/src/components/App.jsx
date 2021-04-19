@@ -5,6 +5,7 @@ import Detail from './Detail';
 import Header from './Header';
 import Footer from './Footer';
 
+
 function App() {
     
     const [notes, setNotes] = useState([]); //게시글 정보를 담을 state

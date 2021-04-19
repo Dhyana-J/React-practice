@@ -130,3 +130,7 @@ function ContextSample(){
     </MyContext.Provider>
 }
  ```
+
+* LifeCycle Method : 컴포넌트가 브라우저상에 나타나고, 사라지고, 업데이트될 때, 에러가 날 때 호출되는 메서드. 클래스형 컴포넌트에서만 사용 가능하다. 함수형 컴포넌트에 useEffect가 있다면, 클래스형 컴포넌트에 LifeCycle메서드가 있는것.
+
+* ComponentDidCatch : Error가 발생한 경우 사용자가 인지할 수 있도록 하고, 에러핸들링을 하기 유용한 메서드

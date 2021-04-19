@@ -1,8 +1,14 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useContext, useState } from 'react';
+import Home from '../src/components/Home';
+import Detail from './detail/[id]';
+import Header from '../src/components/Header';
+import Footer from '../src/components/Footer';
+import { AppContext } from '../src/components/AppContext';
 
-export default function Home() {
-  return (
-      <div>hello</div>
-  )
+function App() {
+    const [notes, setNotes] = useContext(AppContext);
+
+    return <Home notes={notes} setNotes={setNotes} />;
 }
+
+export default App;
