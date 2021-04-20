@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import { Zoom } from '@material-ui/core';
 
 function CreateArea(props) {
+    const [isExpanded, setExpand] = useState(false);
+
     const [note, setNote] = useState({
         id: '',
         title: '',
@@ -29,27 +33,38 @@ function CreateArea(props) {
         event.preventDefault();
     }
 
+    function expand() {
+        setExpand(true);
+    }
+
     return (
-        <div>
-            <form>
-                <input
-                    name="title"
-                    onChange={handleChange}
-                    value={note.title}
-                    placeholder="Title"
-                />
-                <textarea
-                    name="content"
-                    onChange={handleChange}
-                    value={note.content}
-                    placeholder="Take a note..."
-                    rows="3"
-                />
-                <button onClick={submitNote}>
-                    <AddIcon />
-                </button>
-            </form>
-        </div>
+        <section className="section section--writeArea">
+            <div className="inner">
+                <form className="createForm">
+                    {isExpanded && (
+                        <input
+                            name="title"
+                            onChange={handleChange}
+                            value={note.title}
+                            placeholder="Title"
+                        />
+                    )}
+                    <textarea
+                        name="content"
+                        onChange={handleChange}
+                        value={note.content}
+                        placeholder="Take a note..."
+                        onClick={expand}
+                        rows={isExpanded ? 3 : 1}
+                    />
+                    <Zoom in={isExpanded}>
+                        <Fab size="medium" onClick={submitNote}>
+                            <EditIcon />
+                        </Fab>
+                    </Zoom>
+                </form>
+            </div>
+        </section>
     );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Note from './Note';
 import CreateArea from './CreateArea';
 import uuid from 'react-uuid';
@@ -29,6 +30,9 @@ function Home(props) {
 
     return (
         <div>
+            <Head>
+                <title>Home</title>
+            </Head>
             <CreateArea onAdd={addNote} />
             {props.notes.map((noteItem) => {
                 console.log(noteItem);
