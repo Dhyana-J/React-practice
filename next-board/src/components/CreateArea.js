@@ -24,12 +24,16 @@ function CreateArea(props) {
     }
 
     function submitNote(event) {
-        props.onAdd(note);
-        setNote({
-            id: '',
-            title: '',
-            content: '',
-        });
+        if (note.content || note.title) {
+            props.onAdd(note);
+            setNote({
+                id: '',
+                title: '',
+                content: '',
+            });
+        } else {
+            alert('내용을 입력하세요');
+        }
         event.preventDefault();
     }
 
@@ -38,7 +42,7 @@ function CreateArea(props) {
     }
 
     return (
-        <section className="section section--writeArea">
+        <section className="section ">
             <div className="inner">
                 <form className="createForm">
                     {isExpanded && (

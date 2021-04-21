@@ -129,13 +129,12 @@ table {
 }
 
 /*</CssReset>*/
-* {
-    box-sizing: border-box;
-}
 html {
     font-family: 'Montserrat', sans-serif;
+    height: 100vh;
 }
 body {
+    position: relative;
     background: #eee;
 }
 
@@ -143,14 +142,14 @@ header {
     background-color: rgb(91, 165, 131);
     padding: 25px 32px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    height: 100px;
+    height: 50px;
     width: 100%;
     font-size: 3rem;
 }
 
-header a {
+/* header a {
     text-decoration: none;
-}
+} */
 
 header h1 {
     color: #fff;
@@ -163,14 +162,15 @@ header h1:hover {
 }
 
 footer {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
     width: 100%;
-    height: 2.5rem;
 }
 
 footer p {
+    font-size: 1.3rem;
     color: #ccc;
 }
 
@@ -185,7 +185,6 @@ footer p {
     padding: 10px;
     width: 240px;
     margin: 16px;
-    float: left;
 }
 .note h1 {
     font-size: 1.1em;
@@ -217,6 +216,8 @@ footer p {
 }
 
 .note.detail {
+    display: flex;
+    justify-content: center;
     margin: 10%;
     width: 70%;
     min-height: 100px;
@@ -237,6 +238,7 @@ footer p {
 .detail form {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .detail input,
@@ -257,8 +259,8 @@ footer p {
 
 form.createForm {
     position: relative;
-    width: 70vw;
-    margin: 30px auto 20px auto;
+    width: 60vw;
+    margin: 50px auto 20px auto;
     background: #fff;
     padding: 15px;
     border-radius: 7px;
@@ -290,170 +292,45 @@ form.createForm button {
     outline: none;
 }
 
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-html {
-    font-family: 'Montserrat', sans-serif;
-    width: 100vw;
-    height: 100vh;
-}
-body {
-    background: #eee;
-}
-
-header {
-    background-color: rgb(91, 165, 131);
-    padding: 25px 32px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-    height: 100px;
-    width: 100%;
-    font-size: 3rem;
-}
-
-header a {
-    text-decoration: none;
-}
-
-header h1 {
-    color: #fff;
-    font-family: 'McLaren', cursive;
-    font-weight: 200;
-}
-
-header h1:hover {
-    cursor: pointer;
-}
-
-footer {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-}
-
-footer p {
-    color: #ccc;
-}
-
-.form {
-    width: 100%;
-}
-
-.note {
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
-    width: 240px;
-    margin: 16px;
-    float: left;
-}
-.note h1 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
-}
-.note p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.note button {
-    position: relative;
-    float: right;
-    margin-right: 10px;
-    color: rgb(91, 165, 131);
-    background: none;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    cursor: pointer;
-    outline: none;
-}
-
-.note button:hover {
-    color: #000;
-}
-
-.note.detail {
-    margin: 10%;
-    width: 70%;
-    min-height: 100px;
-}
-
-.note.detail input {
-    font-size: 1.5em;
-    margin-bottom: 6px;
-}
-
-.note.detail textarea {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.detail form {
+.section {
     display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.section--noteArea {
+    min-height: 80vh;
+}
+
+.inner {
+    width: 80%;
+}
+
+.inner__noteArea {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section--detail {
+    min-height: 80vh;
+}
+.section--detail .inner {
+    /* width: 100%; */
+}
+
+.not-found {
+    margin: 0 auto;
+    font-size: 2rem;
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    line-height: 3rem;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-.detail input,
-.detail textarea {
-    border: none;
-    resize: none;
-}
-
-.detail input:focus,
-.detail textarea:focus {
-    outline: none;
-}
-
-.detail input::placeholder,
-.detail textarea::placeholder {
-    color: #000;
-}
-
-form:not(.detail) {
-    position: relative;
-    width: 480px;
-    margin: 30px auto 20px auto;
-    background: #fff;
-    padding: 15px;
-    border-radius: 7px;
-    box-shadow: 0 1px 5px rgb(138, 137, 137);
-}
-
-form:not(.detail) input,
-form:not(.detail) textarea {
-    width: 100%;
-    border: none;
-    padding: 4px;
-    outline: none;
-    font-size: 1.2em;
-    font-family: inherit;
-    resize: none;
-}
-form:not(.detail) button {
-    position: absolute;
-    right: 18px;
-    bottom: -18px;
-    background: rgb(91, 165, 131);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    outline: none;
-} */
 
 /*
   @media 뒤에 오는 type
@@ -467,8 +344,7 @@ form:not(.detail) button {
   orientation:portrait -> 세로가 더 긴 상태 (스마트폰 일반모드)
   orientation:landscape -> 가로가 더 긴 상태 (스마트폰 가로모드)
 */
-@media screen and (max-width: 600px) {
-    body {
-        /* background: #000; */
+@media screen and (max-width: 720px) {
+    header {
     }
 }

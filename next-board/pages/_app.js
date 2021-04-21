@@ -6,11 +6,13 @@ import { AppWrapper } from '../src/components/AppContext';
 
 function MyApp({ Component, pageProps }) {
     return (
-        <AppWrapper>
+        // <AppWrapper>
+        <>
             <Header />
             <Component {...pageProps} />
             <Footer />
-        </AppWrapper>
+        </>
+        // {/* </AppWrapper> */}
     );
 }
 

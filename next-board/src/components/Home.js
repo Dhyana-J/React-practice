@@ -4,6 +4,17 @@ import Note from './Note';
 import CreateArea from './CreateArea';
 import uuid from 'react-uuid';
 
+export const getStaticProps = async () => {
+    // runs at build time. this function never runs in the browser
+    // data fetch 할 수 있는 function
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await res.json();
+    return {
+        props: { notes: data },
+    };
+};
+
 function Home(props) {
     if (!props) return null;
 
@@ -29,25 +40,30 @@ function Home(props) {
     }
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Home</title>
             </Head>
             <CreateArea onAdd={addNote} />
-            {props.notes.map((noteItem) => {
-                console.log(noteItem);
-                return (
-                    <Note
-                        key={noteItem.id}
-                        id={noteItem.id}
-                        title={noteItem.title}
-                        content={noteItem.content}
-                        onDelete={deleteNote}
-                        onUpdate={updateNote}
-                    />
-                );
-            })}
-        </div>
+            <section className="section section--noteArea">
+                <div className="inner">
+                    <div className="inner__noteArea">
+                        {props.notes.map((noteItem) => {
+                            return (
+                                <Note
+                                    key={noteItem.id}
+                                    id={noteItem.id}
+                                    title={noteItem.title}
+                                    content={noteItem.content}
+                                    onDelete={deleteNote}
+                                    onUpdate={updateNote}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }
 
