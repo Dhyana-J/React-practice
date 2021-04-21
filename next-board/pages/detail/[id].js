@@ -9,6 +9,8 @@ export const getStaticPaths = async () => {
     //내가 가진 데이터 기준으로 얼마나 많은 라우팅 페이지를 미리 만들어두어야하는지 설정해주는 메소드
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
+
+    //가져온 데이터의 id값들을 가지고 배열을 만든다.
     const paths = data.map((post) => {
         return {
             params: {
@@ -16,21 +18,31 @@ export const getStaticPaths = async () => {
             },
         };
     });
+
     return {
         paths,
         fallback: false,
     };
 };
 
-function Detail() {
+export const getStaticProps = async (context) => {
+    const id = context.params.id;
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    const data = await res.json();
+
+    return {
+        props: {
+            note: data,
+        },
+    };
+};
+
+function Detail({ note }) {
     const router = useRouter();
     // const [notes, setNotes] = useContext(AppContext);
     const [note, setNote] = useState(
         notes.filter((note) => note.id === router.query.id)[0]
     );
-
-    const initialTitle = note.title;
-    const initialContent = note.content;
 
     function deleteNote(event) {
         setNotes((prevNotes) =>
