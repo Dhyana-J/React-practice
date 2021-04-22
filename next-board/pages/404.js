@@ -8,7 +8,7 @@ const NotFound = () => {
     useEffect(() => {
         setTimeout(() => {
             alert('여기서 뭐해? 집에 가자 :)');
-            router.push('/');
+            window.location.href = '/';
         }, 1000);
     }, []);
 
@@ -16,12 +16,7 @@ const NotFound = () => {
         <div className="not-found">
             <h1>Oooops...</h1>
             <h2>`That PAge can't be found`</h2>
-            <p>
-                Go Back to the{' '}
-                <Link href="/">
-                    <a>Home</a>
-                </Link>
-            </p>
+            <p>Go Back to the Home</p>
         </div>
     );
 };

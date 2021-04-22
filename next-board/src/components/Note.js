@@ -22,6 +22,13 @@ function Note(props) {
             <button onClick={handleDelete}>
                 <DeleteIcon />
             </button>
+            <button
+                onClick={() => {
+                    props.onFetch();
+                }}
+            >
+                yaho
+            </button>
             <Link href={`/detail/${props.id}`}>
                 <button>
                     <SearchIcon />
