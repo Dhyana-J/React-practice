@@ -4,7 +4,7 @@ import Note from 'src/components/Note';
 import CreateArea from 'src/components/CreateArea';
 import uuid from 'react-uuid';
 import { AppContext } from 'pages/_app';
-// import InfiniteScroll from 'react-infinite-scroll-component';
+// import styles, { keyframes } from 'styles/Home.module.css';
 import Data from 'src/Data';
 
 function Home() {
@@ -16,6 +16,35 @@ function Home() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    function renderLoadingDots() {
+        if (isLoading)
+            return (
+                <div className="spinner-box">
+                    <div className="pulse-container">
+                        <div className="pulse-bubble pulse-bubble-1"></div>
+                        <div className="pulse-bubble pulse-bubble-2"></div>
+                        <div className="pulse-bubble pulse-bubble-3"></div>
+                    </div>
+                </div>
+                // <div className={styles['spinner-box']}>
+                //     <div className={styles['pulse-container']}>
+                //         <div
+                //             className={`${styles['pulse-bubble']}
+                //                 ${styles['pulsebubble-1']}`}
+                //         ></div>
+                //         <div
+                //             className={`${styles['pulse-bubble']}
+                //             ${styles['pulsebubble-2']}`}
+                //         ></div>
+                //         <div
+                //             className={`${styles['pulse-bubble']}
+                //             ${styles['pulsebubble-3']}`}
+                //         ></div>
+                //     </div>
+                // </div>
+            );
+    }
 
     function handleScroll() {
         if (
@@ -65,13 +94,7 @@ function Home() {
             <Head>
                 <title>Home</title>
             </Head>
-            <div className={isLoading ? 'spinner-box' : 'not-loading'}>
-                <div className={isLoading ? 'pulse-container' : 'not-loading'}>
-                    <div className={'pulse-bubble pulse-bubble-1'}></div>
-                    <div className={'pulse-bubble pulse-bubble-2'}></div>
-                    <div className={'pulse-bubble pulse-bubble-3'}></div>
-                </div>
-            </div>
+            {renderLoadingDots()}
             <CreateArea onAdd={addNote} />
             <section className="section section--noteArea">
                 <div className="inner">
@@ -85,7 +108,6 @@ function Home() {
                                     content={noteItem.content}
                                     onDelete={deleteNote}
                                     onUpdate={updateNote}
-                                    onFetch={fetchMoreData}
                                 />
                             );
                         })}
