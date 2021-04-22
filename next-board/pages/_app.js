@@ -1,16 +1,33 @@
+import { createContext, useEffect, useState } from 'react';
 import 'styles/globals.css';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
-import { AppWrapper } from 'src/components/AppContext';
 
-function MyApp({ Component, pageProps }) {
+export const AppContext = createContext();
+
+function MyApp(props) {
+    console.log(props);
     return (
-        <AppWrapper>
+        <>
             <Header />
-            <Component {...pageProps} />
             <Footer />
-        </AppWrapper>
+        </>
     );
 }
+
+// function MyApp({ Component, pageProps }) {
+//     const [notes, setNotes] = useState([]);
+//     useEffect(() => {
+//         setNotes(() => pageProps.InitialNotes.splice(0, 5));
+//     }, []);
+
+//     return (
+//         <AppContext.Provider value={[notes, setNotes]}>
+//             <Header />
+//             <Component {...pageProps} />
+//             <Footer />
+//         </AppContext.Provider>
+//     );
+// }
 
 export default MyApp;

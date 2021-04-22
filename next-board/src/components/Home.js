@@ -1,32 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import Note from 'src/components/Note';
 import CreateArea from 'src/components/CreateArea';
 import uuid from 'react-uuid';
+import { AppContext } from 'pages/_app';
 
-function Home(props) {
-    let testValue = React.useRef(1);
-    console.log('useRef 변수 : ', testValue);
-
-    if (!props) return null;
+function Home() {
+    const [notes, setNotes] = useContext(AppContext);
 
     function addNote(newNote) {
-        props.setNotes((prevNotes) => {
+        setNotes((prevNotes) => {
             newNote.id = uuid();
             return [...prevNotes, newNote];
         });
-        testValue.current++;
-        console.log(testValue.current);
     }
 
     function deleteNote(id) {
-        props.setNotes((prevNotes) => {
+        setNotes((prevNotes) => {
             return prevNotes.filter((note) => note.id !== id);
         });
     }
 
     function updateNote(note) {
-        props.setNotes((prevNotes) =>
+        setNotes((prevNotes) =>
             prevNotes.map((prevNote) =>
                 prevNote.id === note.id ? note : prevNote
             )
@@ -42,7 +38,7 @@ function Home(props) {
             <section className="section section--noteArea">
                 <div className="inner">
                     <div className="inner__noteArea">
-                        {props.notes.map((noteItem) => {
+                        {notes.map((noteItem) => {
                             return (
                                 <Note
                                     key={noteItem.id}

@@ -3,7 +3,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
-import { AppContext } from 'src/components/AppContext';
+import { AppContext } from 'pages/_app';
+// import Notes from 'src/Data';
+
+// export async function getServerSideProps() {
+//     return {
+//         props: { InitialNotes: Notes },
+//     };
+// }
 
 function Detail() {
     const router = useRouter();
