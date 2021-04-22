@@ -1,21 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
-import Note from './Note';
-import CreateArea from './CreateArea';
+import Note from 'src/components/Note';
+import CreateArea from 'src/components/CreateArea';
 import uuid from 'react-uuid';
 
-export const getStaticProps = async () => {
-    // runs at build time. this function never runs in the browser
-    // data fetch 할 수 있는 function
-
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await res.json();
-    return {
-        props: { notes: data },
-    };
-};
-
 function Home(props) {
+    let testValue = React.useRef(1);
+    console.log('useRef 변수 : ', testValue);
+
     if (!props) return null;
 
     function addNote(newNote) {
@@ -23,6 +15,8 @@ function Home(props) {
             newNote.id = uuid();
             return [...prevNotes, newNote];
         });
+        testValue.current++;
+        console.log(testValue.current);
     }
 
     function deleteNote(id) {

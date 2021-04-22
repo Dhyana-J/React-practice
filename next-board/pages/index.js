@@ -1,21 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Home from '../src/components/Home';
-import Detail from './detail/[id]';
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import { AppContext } from '../src/components/AppContext';
+import React, { useRef, useContext, useEffect, useState } from 'react';
+import Home from 'src/components/Home';
+import { AppContext } from 'src/components/AppContext';
+import InitialNotes from 'src/Data';
 
-// export const getStaticProps = async () => {
-//     // runs at build time. this function never runs in the browser
-//     // data fetch 할 수 있는 function
+export async function getServerSideProps() {
+    return {
+        props: { InitialNotes },
+    };
+}
 
-//     return {
-//         props: { initialNotes: [{ id: 1, title: 1, content: 1 }] },
-//     };
-// };
-
-function App() {
-    const [notes, setNotes] = useState([]);
+function App({ InitialNotes }) {
+    const [notes, setNotes] = useContext(AppContext);
+    useEffect(() => {
+        setNotes(() => InitialNotes.splice(0, 5));
+    }, []);
+    // setNotes(() => {
+    //     return InitialNotes;
+    // });
 
     return <Home notes={notes} setNotes={setNotes} />;
 }

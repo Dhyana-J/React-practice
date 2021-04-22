@@ -1,15 +1,13 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import Notes from 'src/Data';
+
+export const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-    const [notes, setNotes] = useState([
-        { id: '1', title: 1, content: 1 },
-        { id: '2', title: 2, content: 2 },
-    ]);
+    const [notes, setNotes] = useState([]);
     return (
         <AppContext.Provider value={[notes, setNotes]}>
             {children}
         </AppContext.Provider>
     );
 }
-
-export const AppContext = createContext();
