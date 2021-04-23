@@ -1,0 +1,100 @@
+.note {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 240px;
+    margin: 16px;
+    animation: fadein 0.3s;
+    -moz-animation: fadein 0.3s; /* Firefox */
+    -webkit-animation: fadein 0.3s; /* Safari and Chrome */
+    -o-animation: fadein 0.3s; /* Opera */
+}
+
+.note .noteTitle {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.note .noteContent {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.note .buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+}
+
+.noteBtn {
+    color: rgb(91, 165, 131);
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 돋보기 버튼 */
+.note .searchBtn {
+    margin-top: 1px;
+    font-size: 25px;
+}
+
+.note .searchBtn:hover {
+    color: #000;
+}
+
+/* 상세페이지 */
+.detail {
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+    width: 70%;
+    min-height: 100px;
+}
+
+.detail .titleInput {
+    font-size: 1.5em;
+    margin-bottom: 6px;
+}
+
+.detail .contentInput {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.detail form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.detail input,
+.detail textarea {
+    border: none;
+    resize: none;
+}
+
+.detail input:focus,
+.detail textarea:focus {
+    outline: none;
+}
+
+.detail input::placeholder,
+.detail textarea::placeholder {
+    color: #000;
+}
+
+.detail .noteBtn {
+    padding: 0 4%;
+}
+
+.detail .btn {
+    font-size: 2rem;
+}

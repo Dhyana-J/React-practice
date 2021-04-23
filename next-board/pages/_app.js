@@ -6,16 +6,6 @@ import Notes from 'src/Data';
 
 export const AppContext = createContext();
 
-// function MyApp(props) {
-//     console.log(props);
-//     return (
-//         <>
-//             <Header />
-//             <Footer />
-//         </>
-//     );
-// }
-
 function MyApp({ Component, pageProps }) {
     const [notes, setNotes] = useState([]);
     useEffect(() => {

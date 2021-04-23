@@ -4,8 +4,9 @@ import Note from 'src/components/Note';
 import CreateArea from 'src/components/CreateArea';
 import uuid from 'react-uuid';
 import { AppContext } from 'pages/_app';
-// import styles, { keyframes } from 'styles/Home.module.css';
 import Data from 'src/Data';
+import AnimationCircle from 'src/styled_components/AnimationCircle';
+import AnimationNote from 'src/styled_components/AnimationNote';
 
 function Home() {
     const [notes, setNotes] = useContext(AppContext);
@@ -17,47 +18,16 @@ function Home() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    function renderLoadingDots() {
-        if (isLoading)
-            return (
-                <div className="spinner-box">
-                    <div className="pulse-container">
-                        <div className="pulse-bubble pulse-bubble-1"></div>
-                        <div className="pulse-bubble pulse-bubble-2"></div>
-                        <div className="pulse-bubble pulse-bubble-3"></div>
-                    </div>
-                </div>
-                // <div className={styles['spinner-box']}>
-                //     <div className={styles['pulse-container']}>
-                //         <div
-                //             className={`${styles['pulse-bubble']}
-                //                 ${styles['pulsebubble-1']}`}
-                //         ></div>
-                //         <div
-                //             className={`${styles['pulse-bubble']}
-                //             ${styles['pulsebubble-2']}`}
-                //         ></div>
-                //         <div
-                //             className={`${styles['pulse-bubble']}
-                //             ${styles['pulsebubble-3']}`}
-                //         ></div>
-                //     </div>
-                // </div>
-            );
-    }
-
+    // 스크롤 바닥치면 데이터 추가 로드
     function handleScroll() {
-        if (
-            window.pageYOffset + document.documentElement.clientHeight >
-            document.documentElement.scrollHeight - 1
-        )
-            fetchMoreData();
+        window.pageYOffset + document.documentElement.clientHeight >
+            document.documentElement.scrollHeight - 1 && fetchMoreData();
     }
 
     function fetchMoreData() {
         setLoadingState(true);
         setTimeout(() => {
-            const loadHowMany = 2;
+            const loadHowMany = 5;
             setNotes((prevValues) => {
                 return prevValues.concat(
                     Data.splice(currentIndex, loadHowMany)
@@ -89,26 +59,34 @@ function Home() {
         );
     }
 
+    // const currentNotes = useMemo(()=>notes)
+
     return (
         <>
             <Head>
                 <title>Home</title>
             </Head>
-            {renderLoadingDots()}
+            {isLoading && <AnimationCircle />}
             <CreateArea onAdd={addNote} />
             <section className="section section--noteArea">
                 <div className="inner">
                     <div className="inner__noteArea">
-                        {notes.map((noteItem) => {
+                        {notes.map((noteItem, index) => {
                             return (
-                                <Note
+                                <AnimationNote
                                     key={noteItem.id}
-                                    id={noteItem.id}
-                                    title={noteItem.title}
-                                    content={noteItem.content}
-                                    onDelete={deleteNote}
-                                    onUpdate={updateNote}
-                                />
+                                    index={index}
+                                    noteLength={notes.length}
+                                >
+                                    <Note
+                                        key={noteItem.id}
+                                        id={noteItem.id}
+                                        title={noteItem.title}
+                                        content={noteItem.content}
+                                        onDelete={deleteNote}
+                                        onUpdate={updateNote}
+                                    />
+                                </AnimationNote>
                             );
                         })}
                     </div>

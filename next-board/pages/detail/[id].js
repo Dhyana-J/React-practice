@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 import { AppContext } from 'pages/_app';
+import Styles from 'styles/Note.module.css';
 // import Notes from 'src/Data';
 
 // export async function getServerSideProps() {
@@ -14,10 +16,24 @@ import { AppContext } from 'pages/_app';
 
 function Detail() {
     const router = useRouter();
+
     const [notes, setNotes] = useContext(AppContext);
+
     const [note, setNote] = useState(
         notes.filter((note) => note.id === router.query.id)[0]
     );
+
+    if (!note) {
+        return (
+            <div className="not-found">
+                <h1>Oooops...</h1>
+                <h2>That PAge can't be found</h2>
+                <Link href="/">
+                    <a>Go Back to the Home</a>
+                </Link>
+            </div>
+        );
+    }
 
     function deleteNote(event) {
         setNotes((prevNotes) =>
@@ -58,27 +74,35 @@ function Detail() {
             </Head>
             <section className="section section--detail">
                 <div className="inner">
-                    <div className="note detail">
-                        <form className="detail">
+                    <div className={`${Styles.note} ${Styles.detail}`}>
+                        <form className={Styles.detail}>
                             <input
+                                className={Styles.titleInput}
                                 type="text"
                                 name="title"
                                 onChange={handleChange}
                                 value={note.title}
                             />
                             <textarea
+                                className={Styles.contentInput}
                                 resize="disable"
                                 name="content"
                                 onChange={handleChange}
                                 rows="30"
                                 value={note.content}
                             ></textarea>
-                            <div>
-                                <button onClick={deleteNote}>
-                                    <DeleteIcon />
+                            <div className={Styles.buttonWrapper}>
+                                <button
+                                    className={Styles.noteBtn}
+                                    onClick={deleteNote}
+                                >
+                                    <DeleteIcon className={Styles.btn} />
                                 </button>
-                                <button onClick={updateNote}>
-                                    <CreateIcon />
+                                <button
+                                    className={Styles.noteBtn}
+                                    onClick={updateNote}
+                                >
+                                    <CreateIcon className={Styles.btn} />
                                 </button>
                             </div>
                         </form>

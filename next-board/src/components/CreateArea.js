@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import { Zoom } from '@material-ui/core';
+import Styles from 'styles/CreateArea.module.css';
 
 function CreateArea(props) {
     const [isExpanded, setExpand] = useState(false);
@@ -44,9 +45,10 @@ function CreateArea(props) {
     return (
         <section className="section ">
             <div className="inner">
-                <form className="createForm">
+                <form className={Styles.createForm}>
                     {isExpanded && (
                         <input
+                            className={Styles.title}
                             name="title"
                             onChange={handleChange}
                             value={note.title}
@@ -54,6 +56,9 @@ function CreateArea(props) {
                         />
                     )}
                     <textarea
+                        className={`${isExpanded && Styles.expandEffect} ${
+                            Styles.content
+                        }`}
                         name="content"
                         onChange={handleChange}
                         value={note.content}

@@ -178,120 +178,6 @@ footer p {
     width: 100%;
 }
 
-.note {
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
-    width: 240px;
-    margin: 16px;
-}
-.note h1 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
-}
-.note p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.note button {
-    position: relative;
-    float: right;
-    margin-right: 10px;
-    color: rgb(91, 165, 131);
-    background: none;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    cursor: pointer;
-    outline: none;
-}
-
-.note button:hover {
-    color: #000;
-}
-
-.note.detail {
-    display: flex;
-    justify-content: center;
-    margin: 10%;
-    width: 70%;
-    min-height: 100px;
-}
-
-.note.detail input {
-    font-size: 1.5em;
-    margin-bottom: 6px;
-}
-
-.note.detail textarea {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-.detail form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.detail input,
-.detail textarea {
-    border: none;
-    resize: none;
-}
-
-.detail input:focus,
-.detail textarea:focus {
-    outline: none;
-}
-
-.detail input::placeholder,
-.detail textarea::placeholder {
-    color: #000;
-}
-
-form.createForm {
-    position: relative;
-    width: 60vw;
-    margin: 50px auto 20px auto;
-    background: #fff;
-    padding: 15px;
-    border-radius: 7px;
-    box-shadow: 0 1px 5px rgb(138, 137, 137);
-}
-
-form.createForm input,
-form.createForm textarea {
-    width: 100%;
-    border: none;
-    padding: 4px;
-    outline: none;
-    font-size: 1.2em;
-    font-family: inherit;
-    resize: none;
-}
-form.createForm button {
-    position: absolute;
-    right: 18px;
-    bottom: -18px;
-    background: rgb(91, 165, 131);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    outline: none;
-}
-
 .section {
     display: flex;
     justify-content: center;
@@ -316,67 +202,16 @@ form.createForm button {
 .section--detail {
     min-height: 80vh;
 }
-.section--detail .inner {
-    /* width: 100%; */
-}
 
 .not-found {
-    margin: 0 auto;
-    font-size: 2rem;
-    width: 50vw;
-    height: 50vh;
     display: flex;
-    line-height: 3rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-@keyframes pulse {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0.25;
-        transform: scale(0.75);
-    }
-}
-
-.spinner-box {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    position: absolute;
-    bottom: 5%;
-    left: 40%;
-}
-
-.pulse-container {
-    width: 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pulse-bubble {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #3ff9dc;
-}
-
-.pulse-bubble-1 {
-    animation: pulse 0.4s ease 0s infinite alternate;
-}
-.pulse-bubble-2 {
-    animation: pulse 0.4s ease 0.2s infinite alternate;
-}
-.pulse-bubble-3 {
-    animation: pulse 0.4s ease 0.4s infinite alternate;
+    font-weight: 800;
+    font-size: 2rem;
+    height: 80vh;
+    line-height: 3rem;
 }
 
 /*
@@ -391,7 +226,7 @@ form.createForm button {
   orientation:portrait -> 세로가 더 긴 상태 (스마트폰 일반모드)
   orientation:landscape -> 가로가 더 긴 상태 (스마트폰 가로모드)
 */
-@media screen and (max-width: 720px) {
+/* @media screen and (max-width: 720px) {
     header {
     }
-}
+} */
