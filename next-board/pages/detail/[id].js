@@ -6,21 +6,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 import { AppContext } from 'pages/_app';
 import Styles from 'styles/Note.module.css';
-// import Notes from 'src/Data';
+import Notes from 'src/Data';
 
-// export async function getServerSideProps() {
-//     return {
-//         props: { InitialNotes: Notes },
-//     };
-// }
-
-function Detail() {
+function Detail({ item }) {
+    console.log('client side item : ', item);
     const router = useRouter();
 
     const [notes, setNotes] = useContext(AppContext);
 
     const [note, setNote] = useState(
-        notes.filter((note) => note.id === router.query.id)[0]
+        // notes.filter((note) => note.id === router.query.id)[0]
+        item
     );
 
     if (!note) {
@@ -114,3 +110,17 @@ function Detail() {
 }
 
 export default Detail;
+
+export async function getServerSideProps(context) {
+    const id = context.params.id;
+    console.log('this is id');
+    console.log(id);
+
+    const [data] = Notes.filter((note) => note.id === id);
+
+    return {
+        props: {
+            item: data || null,
+        },
+    };
+}
