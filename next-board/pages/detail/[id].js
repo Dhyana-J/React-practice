@@ -15,8 +15,7 @@ function Detail({ item }) {
     const [notes, setNotes] = useContext(AppContext);
 
     const [note, setNote] = useState(
-        // notes.filter((note) => note.id === router.query.id)[0]
-        item
+        notes.filter((note) => note.id === router.query.id)[0]
     );
 
     if (!note) {
@@ -111,16 +110,16 @@ function Detail({ item }) {
 
 export default Detail;
 
-export async function getServerSideProps(context) {
-    const id = context.params.id;
-    console.log('this is id');
-    console.log(id);
+// export async function getServerSideProps(context) {
+//     const id = context.params.id;
+//     console.log('this is id');
+//     console.log(id);
 
-    const [data] = Notes.filter((note) => note.id === id);
+//     const [data] = Notes.filter((note) => note.id === id);
 
-    return {
-        props: {
-            item: data || null,
-        },
-    };
-}
+//     return {
+//         props: {
+//             item: data || null,
+//         },
+//     };
+// }
